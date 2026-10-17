@@ -6,11 +6,19 @@
 # See: https://github.com/github/gitignore/tree/main/Global
 #
 .utmp/
+<<<<<<< HEAD
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+=======
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+>>>>>>> 79bbea0df1b53296509c35b5f43626ce313af995
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 *.log
