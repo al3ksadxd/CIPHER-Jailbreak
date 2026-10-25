@@ -4,7 +4,7 @@ public class AITestUI : MonoBehaviour
 {
     [SerializeField] private AICompanion companion;
     private string inputMessage = "";
-    private string lastResponse = "Luna te sluša...";
+    private string lastResponse = "Ai te sluša...";
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class AITestUI : MonoBehaviour
         {
             string msgToSend = inputMessage;
             inputMessage = "";
-            lastResponse = "Luna razmišlja...";
+            lastResponse = "Ai razmišlja...";
 
             // Šalje poruku Luni i čeka odgovor
             lastResponse = await companion.TalkToCompanion(msgToSend);

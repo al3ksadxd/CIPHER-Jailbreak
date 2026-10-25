@@ -9,6 +9,7 @@ public class CanvasChatUI : MonoBehaviour
     [SerializeField] private MonoBehaviour mouseLookScript; // Prevuci MouseLook skriptu ovde!
 
     [Header("UI Elements")]
+    [SerializeField] private GameObject chatPanel; // PREVUCI SVOJ UI PANEL/OBJEKAT OVDE!
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private TMP_Text responseText;
     [SerializeField] private Button sendButton;
@@ -35,7 +36,7 @@ public class CanvasChatUI : MonoBehaviour
         // Pritisak na TAB ili T otvara/zatvara chat
         if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.T))
         {
-            if (!inputField.isFocused)
+            if (inputField == null || !inputField.isFocused)
             {
                 ToggleChat();
             }
@@ -69,15 +70,19 @@ public class CanvasChatUI : MonoBehaviour
     {
         isChatOpen = true;
 
-        // 1. Privremeno ugasimo skriptu za gledanje mišem da ne zaključava kursor
+        // 1. Uključujemo vizuelno panel chata
+        if (chatPanel != null)
+            chatPanel.SetActive(true);
+
+        // 2. Privremeno ugasimo skriptu za gledanje mišem da ne zaključava kursor
         if (mouseLookScript != null)
             mouseLookScript.enabled = false;
 
-        // 2. Otključamo kursor i prikažemo ga
+        // 3. Otključamo kursor i prikažemo ga
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        // 3. Automatski fokusiramo polje za kucanje
+        // 4. Automatski fokusiramo polje za kucanje
         if (inputField != null)
         {
             inputField.ActivateInputField();
@@ -88,11 +93,15 @@ public class CanvasChatUI : MonoBehaviour
     {
         isChatOpen = false;
 
-        // 1. Ponovo upalimo skriptu za kameru
+        // 1. Isključujemo vizuelno panel chata
+        if (chatPanel != null)
+            chatPanel.SetActive(false);
+
+        // 2. Ponovo upalimo skriptu za kameru
         if (mouseLookScript != null)
             mouseLookScript.enabled = true;
 
-        // 2. Zaključamo kursor za First-Person kretanje
+        // 3. Zaključamo kursor za First-Person kretanje
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

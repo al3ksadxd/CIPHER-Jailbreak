@@ -295,7 +295,6 @@ GameObject:
   - component: {fileID: 151726079}
   - component: {fileID: 151726078}
   - component: {fileID: 151726077}
-  - component: {fileID: 151726076}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -303,23 +302,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &151726076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151726075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c036c57d20054474db14533d9e9df218, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CanvasChatUI
-  companion: {fileID: 2001548503}
-  mouseLookScript: {fileID: 711313038}
-  inputField: {fileID: 840606204}
-  responseText: {fileID: 660778310}
-  sendButton: {fileID: 1155502583}
 --- !u!114 &151726077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +381,7 @@ RectTransform:
   - {fileID: 660778312}
   - {fileID: 1155502586}
   - {fileID: 840606205}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 341344183}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -748,6 +730,57 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326493282}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &341344182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 341344183}
+  - component: {fileID: 341344184}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &341344183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341344182}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 474.10046, y: 405.31946, z: 42.35535}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 151726080}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &341344184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341344182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c036c57d20054474db14533d9e9df218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasChatUI
+  companion: {fileID: 2001548503}
+  mouseLookScript: {fileID: 711313038}
+  chatPanel: {fileID: 151726075}
+  inputField: {fileID: 840606204}
+  responseText: {fileID: 660778310}
+  sendButton: {fileID: 1155502583}
 --- !u!1 &455816457
 GameObject:
   m_ObjectHideFlags: 0
@@ -4469,5 +4502,5 @@ SceneRoots:
   - {fileID: 1177201611}
   - {fileID: 2059497095}
   - {fileID: 2001548507}
-  - {fileID: 151726080}
   - {fileID: 828736162}
+  - {fileID: 341344183}
