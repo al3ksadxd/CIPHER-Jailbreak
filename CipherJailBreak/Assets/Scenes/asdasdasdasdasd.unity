@@ -775,7 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c036c57d20054474db14533d9e9df218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CanvasChatUI
-  companion: {fileID: 2001548503}
+  companion: {fileID: 0}
   mouseLookScript: {fileID: 711313038}
   chatPanel: {fileID: 151726075}
   inputField: {fileID: 840606204}
@@ -3977,8 +3977,7 @@ GameObject:
   - component: {fileID: 2001548506}
   - component: {fileID: 2001548505}
   - component: {fileID: 2001548504}
-  - component: {fileID: 2001548503}
-  - component: {fileID: 2001548508}
+  - component: {fileID: 2001548509}
   m_Layer: 0
   m_Name: AI_Companion
   m_TagString: Untagged
@@ -3986,21 +3985,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2001548503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2001548502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25f70ad37e7b4ef4c825fb82374bb606, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AICompanion
-  ollamaUrl: http://localhost:11434/api/generate
-  modelName: qwen2.5:3b
-  dbManager: {fileID: 0}
 --- !u!136 &2001548504
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4096,7 +4080,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2001548508
+--- !u!114 &2001548509
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4105,9 +4089,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2001548502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aecf8c1b937c804783642b1679e0442, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d5d2f8209b8cfa41af4b8e663780f80, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SQLiteManager
+  m_EditorClassIdentifier: Assembly-CSharp::LLamaCompanion
 --- !u!1 &2005299885
 GameObject:
   m_ObjectHideFlags: 0

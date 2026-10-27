@@ -5,11 +5,11 @@ using TMPro;
 public class CanvasChatUI : MonoBehaviour
 {
     [Header("Dependencies")]
-    [SerializeField] private AICompanion companion;
-    [SerializeField] private MonoBehaviour mouseLookScript; // Prevuci MouseLook skriptu ovde!
+    [SerializeField] private LLamaCompanion companion;
+    [SerializeField] private MonoBehaviour mouseLookScript;
 
     [Header("UI Elements")]
-    [SerializeField] private GameObject chatPanel; // PREVUCI SVOJ UI PANEL/OBJEKAT OVDE!
+    [SerializeField] private GameObject chatPanel;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private TMP_Text responseText;
     [SerializeField] private Button sendButton;
@@ -19,7 +19,7 @@ public class CanvasChatUI : MonoBehaviour
     private void Start()
     {
         if (companion == null)
-            companion = FindObjectOfType<AICompanion>();
+            companion = FindFirstObjectByType<LLamaCompanion>();
 
         if (sendButton != null)
             sendButton.onClick.AddListener(OnSendClicked);
@@ -27,13 +27,11 @@ public class CanvasChatUI : MonoBehaviour
         if (responseText != null)
             responseText.text = "Luna te sluša...";
 
-        // Na startu zatvorimo chat i zaključamo kursor za igru
         CloseChat();
     }
 
     private void Update()
     {
-        // Pritisak na TAB ili T otvara/zatvara chat
         if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.T))
         {
             if (inputField == null || !inputField.isFocused)
@@ -42,7 +40,6 @@ public class CanvasChatUI : MonoBehaviour
             }
         }
 
-        // Slanje poruke na Enter dok je polje fokusirano
         if (isChatOpen && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)))
         {
             if (inputField != null && inputField.isFocused)
@@ -55,53 +52,25 @@ public class CanvasChatUI : MonoBehaviour
     public void ToggleChat()
     {
         isChatOpen = !isChatOpen;
-
-        if (isChatOpen)
-        {
-            OpenChat();
-        }
-        else
-        {
-            CloseChat();
-        }
+        if (isChatOpen) OpenChat();
+        else CloseChat();
     }
 
     private void OpenChat()
     {
         isChatOpen = true;
-
-        // 1. Uključujemo vizuelno panel chata
-        if (chatPanel != null)
-            chatPanel.SetActive(true);
-
-        // 2. Privremeno ugasimo skriptu za gledanje mišem da ne zaključava kursor
-        if (mouseLookScript != null)
-            mouseLookScript.enabled = false;
-
-        // 3. Otključamo kursor i prikažemo ga
+        if (chatPanel != null) chatPanel.SetActive(true);
+        if (mouseLookScript != null) mouseLookScript.enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
-        // 4. Automatski fokusiramo polje za kucanje
-        if (inputField != null)
-        {
-            inputField.ActivateInputField();
-        }
+        if (inputField != null) inputField.ActivateInputField();
     }
 
     private void CloseChat()
     {
         isChatOpen = false;
-
-        // 1. Isključujemo vizuelno panel chata
-        if (chatPanel != null)
-            chatPanel.SetActive(false);
-
-        // 2. Ponovo upalimo skriptu za kameru
-        if (mouseLookScript != null)
-            mouseLookScript.enabled = true;
-
-        // 3. Zaključamo kursor za First-Person kretanje
+        if (chatPanel != null) chatPanel.SetActive(false);
+        if (mouseLookScript != null) mouseLookScript.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -111,18 +80,23 @@ public class CanvasChatUI : MonoBehaviour
         if (inputField == null || string.IsNullOrEmpty(inputField.text)) return;
 
         string userMsg = inputField.text;
-        inputField.text = ""; // Očisti polje
+        inputField.text = "";
 
         if (responseText != null)
             responseText.text = "Luna razmišlja...";
 
-        // Pozivamo Ollamu
+        if (companion == null)
+        {
+            if (responseText != null) responseText.text = "Greška: Nema LLamaCompanion reference!";
+            return;
+        }
+
+        // Pozivamo Lunu iz LLamaCompanion klase
         string reply = await companion.TalkToCompanion(userMsg);
 
         if (responseText != null)
             responseText.text = reply;
 
-        // Vratimo fokus u input field za sledeću poruku
         if (inputField != null)
             inputField.ActivateInputField();
     }
