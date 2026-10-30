@@ -15,11 +15,12 @@ public class LLamaCompanion : MonoBehaviour
 
     async void Start()
     {
+        Debug.Log("Hellooooooo");
         // Ručno podešavanje putanje do nativnih biblioteka iz korena projekta
         string rootDir = Directory.GetCurrentDirectory();
         
         // Putanja do .gguf modela u StreamingAssets folderu
-        string modelPath = Path.Combine(Application.dataPath, "Ai_Companion", "StreamingAssets", "AI_model.gguf");
+        string modelPath = Path.Combine(Application.dataPath, "StreamingAssets", "AI_model.gguf");
 
         if (!File.Exists(modelPath))
         {
